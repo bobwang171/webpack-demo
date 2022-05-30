@@ -20,18 +20,30 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              implementation:require("dart-sass")
-            }
-          },
-        ],
+        test: /\.(png|svg|jpg|gif)$/i,
+        loader: ["file-loader"]
       },
+      {
+        test: /\.less$/i,
+        loader: ["style-loader","css-loader","less-loader"]
+      },
+        {
+          test: /\.styl$/i,
+          loader: ["style-loader","css-loader","stylus-loader"]
+        },
+        {
+          test: /\.scss$/i,
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "sass-loader",
+              options: {
+                implementation: require("dart-sass")
+              }
+            },
+          ]
+        }
     ],
   },
 }
